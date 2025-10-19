@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Hub - Premium Fashion | Online Shopping for Men & Women</title>
+    <meta name="description" content="Shop premium fashion at Brand Hub. Discover trendy clothing for men and women with easy pre-booking, COD, and fast delivery. Best prices guaranteed.">
+    <meta name="keywords" content="fashion, clothing, men's wear, women's wear, online shopping, pre-booking, cash on delivery">
+    <meta name="author" content="Brand Hub">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#/" class="navbar-brand">
+            <div><img src="brandhublogo.png" alt="brandhub logo"></div>
+            <div class="brand-text">
+                <h1>Brand's Hub</h1>
+                <p>Premium Fashion</p>
+            </div>
+        </a>
+
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="#/" onclick="setActiveNav(this)">Home</a></li>
+            <li><a href="#/categories" onclick="setActiveNav(this)">Categories</a></li>
+            <li><a href="#/products" onclick="setActiveNav(this)">Products</a></li>
+            <li><a href="#/about" onclick="setActiveNav(this)">About</a></li>
+            <li><a href="#/contact" onclick="setActiveNav(this)">Contact</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products..." onkeyup="handleSearch(event)">
+                <span>🔍</span>
+            </div>
+            <button class="icon-button" onclick="navigateTo('/wishlist')" title="Wishlist">
+                🤍
+                <span class="badge" id="wishlistCount">0</span>
+            </button>
+            <button class="icon-button" onclick="navigateTo('/cart')" title="Cart">
+                🛒
+                <span class="badge" id="cartCount">0</span>
+            </button>
+            
+            <!-- Updated User Dropdown -->
+            <div class="user-dropdown">
+                <button class="icon-button" id="customerAuthBtn" title="Account">
+                    👤
+                </button>
+                <div class="dropdown-menu" id="userDropdownMenu">
+                    <div class="dropdown-content" id="userDropdownContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="mainContent">
+        <!-- Content will be dynamically rendered here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Brand Hub</h3>
+                <p>Your premium destination for fashion in India. Shop the latest trends in men's and women's clothing with easy pre-booking and fast delivery.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#/about">About Us</a>
+                <a href="#/contact">Contact</a>
+                <a href="#/products">All Products</a>
+                <a href="#" onclick="openAdminLogin()">Admin Login</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Care</h3>
+                <a href="#">FAQs</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Fashion Street, Mumbai</p>
+                <p>📞 +91 98765 43210</p>
+                <p>📧 support@brandhub.com</p>
+                <p>🕒 Mon-Sat: 10AM-8PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates and exclusive offers</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email" id="newsletterEmail">
+                    <button onclick="subscribeNewsletter()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Brand Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Select Payment Method</h2>
+                <button class="close-modal" onclick="closePaymentModal()">×</button>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-tabs">
+                    <button class="payment-tab active" onclick="showPaymentTab('online')">💳 Online Payment</button>
+                    <button class="payment-tab" onclick="showPaymentTab('cod')">💰 Cash on Delivery</button>
+                </div>
+                
+                <div id="onlinePayment" class="payment-content active">
+                    <div class="payment-details" id="paymentDetails">
+                        <!-- Payment details will be populated here -->
+                    </div>
+                    <div class="upi-id">brandhub@upi</div>
+                    <div class="demo-note">
+                        ⚠️ Demo Mode - No actual payment will be processed
+                    </div>
+                    <button class="btn-large btn-black" style="width: 100%; margin-top: 1rem;" onclick="confirmPayment('online')">
+                        Confirm Online Payment
+                    </button>
+                </div>
+                
+                <div id="codPayment" class="payment-content">
+                    <div class="payment-details" id="codDetails">
+                        <!-- COD details will be populated here -->
+                    </div>
+                    <div class="cod-info">
+                        <h3>💰 Cash on Delivery</h3>
+                        <p>Pay when your order is delivered to your address</p>
+                        <div class="cod-note">
+                            <p><strong>Delivery Information:</strong></p>
+                            <p>• Standard delivery: 3-5 business days</p>
+                            <p>• Free delivery on orders above ₹999</p>
+                            <p>• ₹49 delivery charge for orders below ₹999</p>
+                        </div>
+                    </div>
+                    <button class="btn-large btn-black" style="width: 100%; margin-top: 1rem;" onclick="confirmPayment('cod')">
+                        Confirm COD Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Login/Register Modal -->
+    <div class="modal" id="customerAuthModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authModalTitle">Account</h2>
+                <button class="close-modal" onclick="closeAuthModal()">×</button>
+            </div>
+            <div class="auth-tabs">
+                <button id="tabLogin" class="active" onclick="showLogin()">Login</button>
+                <button id="tabRegister" onclick="showRegister()">Register</button>
+            </div>
+            <div class="auth-body">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                    <button type="submit">Login</button>
+                </form>
+                <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)">
+                    <label for="regName">Name</label>
+                    <input type="text" id="regName" required>
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content quick-view-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Quick View</h2>
+                <button class="close-modal" onclick="closeQuickView()">×</button>
+            </div>
+            <div id="quickViewContent">
+                <!-- Quick view content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
