@@ -57,8 +57,26 @@
             </div>
         </div>
 
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Search Overlay -->
+    <div class="mobile-search-overlay" id="mobileSearchOverlay">
+        <div class="mobile-search-container">
+            <div class="mobile-search-header">
+                <h3>Search Products</h3>
+                <button class="close-search" id="closeSearch">✕</button>
+            </div>
+            <div class="mobile-search-bar">
+                <input type="text" id="mobileSearchInput" placeholder="Search products...">
+                <button onclick="handleMobileSearch()">🔍</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content Area -->
     <main class="main-content" id="mainContent">
@@ -208,6 +226,30 @@
 
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="#/" class="mobile-nav-item">
+            <span>🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="#/categories" class="mobile-nav-item">
+            <span>📂</span>
+            <span>Categories</span>
+        </a>
+        <a href="#/products" class="mobile-nav-item">
+            <span>👕</span>
+            <span>Products</span>
+        </a>
+        <a href="#/wishlist" class="mobile-nav-item">
+            <span>🤍</span>
+            <span>Wishlist</span>
+        </a>
+        <a href="#/cart" class="mobile-nav-item">
+            <span>🛒</span>
+            <span>Cart</span>
+        </a>
+    </div>
 
     <script src="script.js"></script>
 </body>
